@@ -81,8 +81,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(this, result.getContents(),
                             Toast.LENGTH_LONG).show();
                 }
+            } }
+        {
+            try {
+                String geoUri = result.getContents();
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+                //Set Package
+                intent.setPackage("com.google.android.apps.maps");
+
+                //Set Flag
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                startActivity(intent);
+            } finally {
+
             }
-        } else{
+
+        } {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
